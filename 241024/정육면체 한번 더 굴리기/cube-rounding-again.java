@@ -143,6 +143,7 @@ public class Main {
         boolean[][] visited = new boolean[n][n];
         Queue<int[]> queue = new ArrayDeque<>();
         queue.add(new int[] {i,j});
+
         int sum = 0;
         int num = map[i][j];
 
@@ -151,7 +152,7 @@ public class Main {
 
             int y = node[0];
             int x = node[1];
-
+            if(visited[y][x]) continue;
             visited[y][x] = true;
             sum+= map[y][x];
             for (int k = 0; k < 4; k++) {
