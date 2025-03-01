@@ -31,10 +31,11 @@ public class Main {
             if(moveGolem()){
                 visited = new boolean[rSize+3][cSize];
                 int bottom = dfs(ny,nx)-2;
-                //System.out.println(bottom+" 답 "+i);
+//                System.out.println("\n답 "+bottom);
 
                 sum += bottom;
             }else{
+//                System.out.println("초기화");
                 clearForest();
             }
         }
@@ -76,20 +77,24 @@ public class Main {
         //동쪽
         while(true){
             if(canMoveSouth()){
+//                System.out.print("남쪽");
             } else if (canMoveWest()) {
+//                System.out.print("서쪽");
                 nx -= 1;
                 ndir = (ndir-1 +4) %4;
             } else if (canMoveEast()) {
+//                System.out.print("동쪽");
                 nx += 1;
                 ndir = (ndir+1)%4;
             } else{
                 break;
             }
             ny += 1;
+//            System.out.print("("+ny+","+nx+")"+ndir+" ");
         }
         //갈수없으면
         // 현재 ny 가 1~2면 return false;
-        if(ny <= 2) return false;
+        if(ny <= 3) return false;
         //forest에 현재 ny nx에 따라 값을 새긴다
         for(int i=0;i<5;i++){
             forest[ny+draw[i][0]][nx+draw[i][1]] = (i==ndir) ? 2 : 1;
